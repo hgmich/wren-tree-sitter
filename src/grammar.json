@@ -740,7 +740,7 @@
       "members": [
         {
           "type": "STRING",
-          "value": "constructor"
+          "value": "construct"
         },
         {
           "type": "SYMBOL",

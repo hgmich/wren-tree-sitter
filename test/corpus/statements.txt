@@ -65,7 +65,7 @@ Class methods
 =============
 
 class Button {
-	constructor new(a, b) {}
+	construct new(a, b) {}
 	static about() {}
 	draw(a) {}
 }

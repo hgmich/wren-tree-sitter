@@ -34,7 +34,7 @@ module.exports = grammar({
     subscript_setter_definition: $ => seq("[", $.parameter_list, "]", "=", "(", $.parameter, ")", $.block),
     infix_operator_definition: $ => seq(alias(/[+-]/, $.operator), "(", $.parameter, ")", $.block),
     method_definition: $ => seq($.identifier, "(", optional($.parameter_list), ")", $.block),
-    constructor: $ => seq("constructor", $.method_definition),
+    constructor: $ => seq("construct", $.method_definition),
     static_method_definition: $ => seq("static", $.method_definition),
     conditional: $ => prec.left(seq($._expression, "?", $._expression, ":", $._expression)),
     list: $ => seq("[", optional(seq($._expression, optional(repeat(seq(",", $._expression))))), "]"),
