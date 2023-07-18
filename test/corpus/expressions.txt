@@ -304,3 +304,24 @@ Binary
 			(number))
 		(operator)
 	(number)))
+
+=====
+Unary
+=====
+
+var a = -h
+var a = !b
+
+---
+
+(source_file
+	(variable_definition
+		(identifier)
+		(unary_expression
+			(operator)
+			(identifier)))
+	(variable_definition
+		(identifier)
+		(unary_expression
+			(operator)
+			(identifier))))

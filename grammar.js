@@ -17,8 +17,9 @@ module.exports = grammar({
     boolean: $ => choice("true", "false"),
     return_statement: $ => seq("return", $._expression),
     assignment: $ => seq($.identifier, "=", $._expression),
+    unary_expression: $ => prec.left(2, seq(alias(choice("!", "-", "~"), $.operator), $._expression)),
     // TODO: @correctness correct prescedence
-    binary_expression: $ => prec.left(1, seq($._expression, alias(choice("+", "-", "==", "!=", "&&", "||", "/", "*"), $.operator), $._expression)),
+    binary_expression: $ => prec.left(2, seq($._expression, alias(choice("+", "-", "==", "!=", "<=", ">=", "&&", "||", "/", "*", "%", ">>", "<<", "&"), $.operator), $._expression)),
     block: $ => seq("{", repeat(choice($._statement, $._expression)), "}"),
     parameter: $ => alias($.identifier, "parameter"),
     parameter_list: $ => seq($.parameter, repeat(seq(",", $.parameter))),
@@ -52,7 +53,7 @@ module.exports = grammar({
     _import_entry: $ => choice($.identifier, $.rename),
     import_statement: $ => prec.right(seq("import", $.string, optional(seq("for", $._import_entry, repeat(seq(",", $._import_entry)))))),
     _statement: $ => choice($.return_statement, $.break_statement, $.continue_statement, $.class_definition, $.variable_definition, $.assignment, $.if_statement, $.for_statement, $.while_statement, $.import_statement, $.block),
-    _expression: $ => choice($.conditional, $.binary_expression, $.raw_string, $.string, $.boolean, $.number, $.null, $.identifier, $.list, $.range, $.map, $.subscript, $.call_expression, $.index_expression),
+    _expression: $ => choice($.conditional, $.unary_expression, $.binary_expression, $.raw_string, $.string, $.boolean, $.number, $.null, $.identifier, $.list, $.range, $.map, $.subscript, $.call_expression, $.index_expression),
   }
 });
 
