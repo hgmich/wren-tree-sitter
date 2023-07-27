@@ -10,7 +10,6 @@ module.exports = grammar({
   rules: {
     source_file: $ => repeat(choice($._statement, $._expression)),
     // TODO: @functionality add foreign methods
-    // TODO: @correctness allow body in call based on index
     // TODO: @correctness allow parameters before the body in call
     // TODO: @correctness add all escape codes here
     string: $ => seq("\"", repeat(choice(/[^"\\]/, "\\\"", seq("%(", repeat($._expression), ")"))), "\""),
@@ -30,7 +29,7 @@ module.exports = grammar({
     parameter_list: $ => seq($.parameter, repeat(seq(",", $.parameter))),
     argument_list: $ => seq($._expression, optional(repeat(seq(",", $._expression)))),
     variable_definition: $ => seq("var", $.identifier, "=", $._expression),
-    call_expression: $ => prec.left(3, choice(prec(1, seq($._expression, $.block)), seq($._expression, "(", optional(alias($.argument_list, $.parameter_list)), ")"))),
+    call_expression: $ => prec.left(3, choice(seq($._expression, "(", optional(alias($.argument_list, $.parameter_list)), ")"), prec.left(4, seq($._expression, optional(seq("(", optional(alias($.argument_list, $.parameter_list)), ")")), $.block)))),
     class_definition: $ => seq("class", $.identifier, optional(seq("is", $.identifier)), $.class_body),
     class_body: $ => seq("{", repeat(choice($.getter_definition, $.setter_definition, $.prefix_operator_definition, $.subscript_operator_definition, $.subscript_setter_definition, $.infix_operator_definition, $.constructor, $.static_method_definition, $.method_definition)), "}"),
     getter_definition: $ => seq($.identifier, $.block),

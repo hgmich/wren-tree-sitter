@@ -21,6 +21,8 @@ Call
 
 call()
 test_func(a, 10)
+body {1}
+body(arg) {1}
 
 ---
 
@@ -31,7 +33,17 @@ test_func(a, 10)
 		(identifier)
 		(parameter_list
 			(identifier)
-			(number))))
+      (number)))
+	(call_expression
+		(identifier)
+		(block
+      (number)))
+	(call_expression
+		(identifier)
+		(parameter_list
+			(identifier))
+		(block
+      (number))))
 
 ===============
 Call with block
