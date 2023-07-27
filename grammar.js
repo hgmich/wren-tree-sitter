@@ -10,7 +10,6 @@ module.exports = grammar({
   rules: {
     source_file: $ => repeat(choice($._statement, $._expression)),
     // TODO: @functionality add foreign methods
-    // TODO: @correctness allow parameters before the body in call
     // TODO: @correctness add all escape codes here
     string: $ => seq("\"", repeat(choice(/[^"\\]/, "\\\"", seq("%(", repeat($._expression), ")"))), "\""),
     raw_string: $ => seq(/"""/, repeat(/./), /"""/),
@@ -32,13 +31,13 @@ module.exports = grammar({
     call_expression: $ => prec.left(3, choice(seq($._expression, "(", optional(alias($.argument_list, $.parameter_list)), ")"), prec.left(4, seq($._expression, optional(seq("(", optional(alias($.argument_list, $.parameter_list)), ")")), $.block)))),
     class_definition: $ => seq("class", $.identifier, optional(seq("is", $.identifier)), $.class_body),
     class_body: $ => seq("{", repeat(choice($.getter_definition, $.setter_definition, $.prefix_operator_definition, $.subscript_operator_definition, $.subscript_setter_definition, $.infix_operator_definition, $.constructor, $.static_method_definition, $.method_definition)), "}"),
-    getter_definition: $ => seq($.identifier, $.block),
-    setter_definition: $ => seq($.identifier, "=", "(", $.parameter, ")", $.block),
-    prefix_operator_definition: $ => seq(alias(/[+-]/, $.operator), $.block),
-    subscript_operator_definition: $ => seq("[", $.parameter_list, "]", $.block),
-    subscript_setter_definition: $ => seq("[", $.parameter_list, "]", "=", "(", $.parameter, ")", $.block),
-    infix_operator_definition: $ => seq(alias(/[+-]/, $.operator), "(", $.parameter, ")", $.block),
-    method_definition: $ => seq($.identifier, "(", optional($.parameter_list), ")", $.block),
+    getter_definition: $ => seq($.identifier, field("body", $.block)),
+    setter_definition: $ => seq($.identifier, "=", "(", $.parameter, ")", field("body", $.block)),
+    prefix_operator_definition: $ => seq(alias(/[+-]/, $.operator), field("body", $.block)),
+    subscript_operator_definition: $ => seq("[", $.parameter_list, "]", field("body", $.block)),
+    subscript_setter_definition: $ => seq("[", $.parameter_list, "]", "=", "(", $.parameter, ")", field("body", $.block)),
+    infix_operator_definition: $ => seq(alias(/[+-]/, $.operator), "(", $.parameter, ")", field("body", $.block)),
+    method_definition: $ => seq($.identifier, "(", optional($.parameter_list), ")", field("body", $.block)),
     constructor: $ => seq("construct", $.method_definition),
     static_method_definition: $ => seq("static", $.method_definition),
     conditional: $ => prec.left(seq($._expression, "?", $._expression, ":", $._expression)),
