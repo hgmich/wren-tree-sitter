@@ -1442,10 +1442,6 @@
           "named": true
         },
         {
-          "type": "comment",
-          "named": true
-        },
-        {
           "type": "conditional",
           "named": true
         },

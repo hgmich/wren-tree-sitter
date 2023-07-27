@@ -5,8 +5,13 @@
 module.exports = grammar({
   name: 'wren',
 
+  extras: $ => [$.comment, /\s|\\\r?\n/],
+
   rules: {
-    source_file: $ => repeat(choice($.comment, $._statement, $._expression)),
+    source_file: $ => repeat(choice($._statement, $._expression)),
+    // TODO: @functionality add foreign methods
+    // TODO: @correctness allow body in call based on index
+    // TODO: @correctness allow parameters before the body in call
     // TODO: @correctness add all escape codes here
     string: $ => seq("\"", repeat(choice(/[^"\\]/, "\\\"", seq("%(", repeat($._expression), ")"))), "\""),
     raw_string: $ => seq(/"""/, repeat(/./), /"""/),
