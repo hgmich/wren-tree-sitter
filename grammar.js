@@ -22,7 +22,7 @@ module.exports = grammar({
     assignment: $ => seq($.identifier, "=", $._expression),
     unary_expression: $ => prec.left(2, seq(alias(choice("!", "-", "~"), $.operator), $._expression)),
     // TODO: @correctness correct prescedence
-    binary_expression: $ => prec.left(2, seq($._expression, alias(choice("+", "-", "==", "!=", "<=", ">=", "&&", "||", "/", "*", "%", ">>", "<<", "&", "<", ">"), $.operator), $._expression)),
+    binary_expression: $ => prec.left(2, seq($._expression, alias(choice("+", "-", "==", "!=", "<=", ">=", "&&", "||", "/", "*", "%", ">>", "<<", "&", "<", ">", "is"), $.operator), $._expression)),
     block: $ => seq("{", repeat(choice($._statement, $._expression)), "}"),
     parameter: $ => alias($.identifier, "parameter"),
     parameter_list: $ => seq($.parameter, repeat(seq(",", $.parameter))),
