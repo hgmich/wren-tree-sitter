@@ -6,9 +6,7 @@ SPDX-License-Identifier: CC0-1.0
 
 # tree-sitter-wren
 
-Tree-sitter grammar for the Wren programming language 
-
-Wren: [wren.io](wren.io)
+Tree-sitter grammar for the [Wren](https://wren.io) programming language 
 
 Licensed under LGPL 3.0 or later.
 
