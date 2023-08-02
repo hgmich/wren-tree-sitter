@@ -154,9 +154,14 @@ again"
 
 "escaped \""
 
+"/* */"
+"//"
+
 ---
 
 (source_file
+	(string)
+	(string)
 	(string)
 	(string)
 	(string))

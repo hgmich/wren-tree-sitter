@@ -13,7 +13,9 @@ module.exports = grammar({
     source_file: $ => repeat(choice($.shebang, $._statement, $._expression)),
     // TODO: @completeness Support foreign methods.
     // TODO: @correctness Add all escape codes here.
-    string: $ => seq("\"", repeat(choice(/[^"\\]/, /\\./, seq("%(", repeat($._expression), ")"))), "\""),
+    // string: $ => seq('"', repeat(choice(token.immediate(/[^"\\]/), token.immediate(/\\./), seq("%(", repeat($._expression), ")"))), '"'),
+    string: $ => seq('"', repeat(choice(token.immediate(prec(1, choice(/[^"\\%]+/, /\\./))), seq("%(", repeat($._expression), ")"))), '"'),
+    // string: $ => seq('"', repeat(token.immediate(/[^"\\]/)), '"'),
     raw_string: $ => seq(/"""/, repeat(/./), /"""/),
     comment: $ => choice(/\/\/.*/, seq("/*", repeat(choice($.comment, /./)), "*/")),
     identifier: $ => /[a-zA-Z_]+[0-9A-Za-z]*/,

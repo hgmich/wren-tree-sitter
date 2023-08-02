@@ -34,12 +34,24 @@
             "type": "CHOICE",
             "members": [
               {
-                "type": "PATTERN",
-                "value": "[^\"\\\\]"
-              },
-              {
-                "type": "PATTERN",
-                "value": "\\\\."
+                "type": "IMMEDIATE_TOKEN",
+                "content": {
+                  "type": "PREC",
+                  "value": 1,
+                  "content": {
+                    "type": "CHOICE",
+                    "members": [
+                      {
+                        "type": "PATTERN",
+                        "value": "[^\"\\\\%]+"
+                      },
+                      {
+                        "type": "PATTERN",
+                        "value": "\\\\."
+                      }
+                    ]
+                  }
+                }
               },
               {
                 "type": "SEQ",
