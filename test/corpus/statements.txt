@@ -221,42 +221,44 @@ Attributes
 #hidden = true
 #group(with, multiple = true, keys = "value")
 #!runtimeAccess = true
-
 class Example {
   #test
   doStuff() {}
 }
+
 ---
 
 (source_file
-	(attribute
-		(identifier))
-	(attribute
-		(identifier)
-		(boolean))
-	(attribute
-		(identifier)
-		(group_members
-			(identifier)
-			(key_value_pair
-				(identifier)
-				(boolean))
-			(key_value_pair
-				(identifier)
-				(string))))
-	(runtime_attribute
-		(identifier)
-		(boolean))
-	(class_definition
-		(identifier)
-		(identifier)
-		(block
-			(attribute
-				(identifier))
-			(member_definition
-				(identifier)
-				(parameter_list)
-				(block)))))))
+  (class_definition
+    (attribute
+      (attribute_value
+        (identifier)))
+    (attribute
+      (attribute_value
+        key: (identifier)
+        value: (boolean)))
+    (attribute
+      (identifier)
+      (attribute_value
+        (identifier))
+      (attribute_value
+        key: (identifier)
+        value: (boolean))
+      (attribute_value
+        key: (identifier)
+        value: (string)))
+    (runtime_attribute
+      (attribute_value
+        key: (identifier)
+        value: (boolean)))
+    (identifier)
+    (class_body
+      (attribute
+        (attribute_value
+          (identifier)))
+      (method_definition
+        (identifier)
+        body: (block)))))
 
 =======
 Imports
