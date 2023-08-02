@@ -3,7 +3,6 @@
 // SPDX-License-Identifier: LGPL-3.0-or-later
 
 // TODO: @readability Break some lines.
-// TODO: @completeness Support attributes.
 module.exports = grammar({
   name: 'wren',
 
@@ -16,6 +15,7 @@ module.exports = grammar({
     string: $ => seq('"', repeat(choice(token.immediate(prec(1, choice(/[^"\\%]+/, /\\./))), seq("%(", repeat($._expression), ")"))), '"'),
     raw_string: $ => seq(/"""/, repeat(/./), /"""/),
     comment: $ => choice(/\/\/.*/, seq("/*", repeat(choice($.comment, /./)), "*/")),
+    // TODO: @correctness Differentiate between name, instance fields and static fields.
     identifier: $ => /[a-zA-Z_]+[0-9A-Za-z]*/,
     null: $ => "null",
     number: $ => choice(seq(/[+-]?[0-9]+/, token.immediate(optional(/\.[0-9]+/)), token.immediate(optional(/e[+-]?[0-9]{2}/))), /0x[0-9A-f]*/),
