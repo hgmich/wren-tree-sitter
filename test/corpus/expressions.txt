@@ -23,6 +23,7 @@ call()
 test_func(a, 10)
 body {1}
 body(arg) {1}
+body {|arg| arg}
 
 ---
 
@@ -36,14 +37,20 @@ body(arg) {1}
       (number)))
 	(call_expression
 		(identifier)
-		(block
+		(call_body
       (number)))
 	(call_expression
 		(identifier)
 		(parameter_list
 			(identifier))
-		(block
-      (number))))
+		(call_body
+      (number)))
+	(call_expression
+		(identifier)
+		(call_body
+			(parameter_list
+				(identifier))
+			(identifier))))
 
 ===============
 Call with block
@@ -56,7 +63,7 @@ test_func {}
 (source_file
 	(call_expression
 		(identifier)
-		(block)))
+		(call_body)))
 
 =====
 Split
