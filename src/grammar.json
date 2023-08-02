@@ -8,6 +8,10 @@
         "members": [
           {
             "type": "SYMBOL",
+            "name": "shebang"
+          },
+          {
+            "type": "SYMBOL",
             "name": "_statement"
           },
           {
@@ -34,8 +38,8 @@
                 "value": "[^\"\\\\]"
               },
               {
-                "type": "STRING",
-                "value": "\\\""
+                "type": "PATTERN",
+                "value": "\\\\."
               },
               {
                 "type": "SEQ",
@@ -336,6 +340,10 @@
                 {
                   "type": "STRING",
                   "value": ">"
+                },
+                {
+                  "type": "STRING",
+                  "value": "is"
                 }
               ]
             },
@@ -1283,6 +1291,10 @@
           "name": "identifier"
         }
       ]
+    },
+    "shebang": {
+      "type": "PATTERN",
+      "value": "#.*"
     },
     "_import_entry": {
       "type": "CHOICE",

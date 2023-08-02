@@ -348,3 +348,13 @@ break
 	(continue_statement)
 	(break_statement))
 
+=======
+Shebang
+=======
+
+#!/usr/bin/env wren
+
+---
+
+(source_file
+	(shebang))

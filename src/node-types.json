@@ -1533,6 +1533,10 @@
           "named": true
         },
         {
+          "type": "shebang",
+          "named": true
+        },
+        {
           "type": "string",
           "named": true
         },
@@ -2086,10 +2090,6 @@
     "named": false
   },
   {
-    "type": "\\\"",
-    "named": false
-  },
-  {
     "type": "]",
     "named": false
   },
@@ -2160,6 +2160,10 @@
   {
     "type": "return",
     "named": false
+  },
+  {
+    "type": "shebang",
+    "named": true
   },
   {
     "type": "static",

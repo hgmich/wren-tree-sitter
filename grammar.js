@@ -2,16 +2,18 @@
 //
 // SPDX-License-Identifier: LGPL-3.0-or-later
 
+// TODO: @readability Break some lines.
+// TODO: @completeness Support attributes.
 module.exports = grammar({
   name: 'wren',
 
   extras: $ => [$.comment, /\s|\\\r?\n/],
 
   rules: {
-    source_file: $ => repeat(choice($._statement, $._expression)),
-    // TODO: @functionality add foreign methods
-    // TODO: @correctness add all escape codes here
-    string: $ => seq("\"", repeat(choice(/[^"\\]/, "\\\"", seq("%(", repeat($._expression), ")"))), "\""),
+    source_file: $ => repeat(choice($.shebang, $._statement, $._expression)),
+    // TODO: @completeness Support foreign methods.
+    // TODO: @correctness Add all escape codes here.
+    string: $ => seq("\"", repeat(choice(/[^"\\]/, /\\./, seq("%(", repeat($._expression), ")"))), "\""),
     raw_string: $ => seq(/"""/, repeat(/./), /"""/),
     comment: $ => choice(/\/\/.*/, seq("/*", repeat(choice($.comment, /./)), "*/")),
     identifier: $ => /[a-zA-Z_]+[0-9A-Za-z]*/,
@@ -53,10 +55,10 @@ module.exports = grammar({
     break_statement: $ => "break",
     continue_statement: $ => "continue",
     rename: $ => seq($.identifier, "as", $.identifier),
+    shebang: $ => /#.*/,
     _import_entry: $ => choice($.identifier, $.rename),
     import_statement: $ => prec.right(seq("import", $.string, optional(seq("for", $._import_entry, repeat(seq(",", $._import_entry)))))),
     _statement: $ => choice($.return_statement, $.break_statement, $.continue_statement, $.class_definition, $.variable_definition, $.assignment, $.if_statement, $.for_statement, $.while_statement, $.import_statement, $.block),
     _expression: $ => choice($.conditional, $.unary_expression, $.binary_expression, $.raw_string, $.string, $.boolean, $.number, $.null, $.identifier, $.list, $.range, $.map, $.subscript, $.call_expression, $.index_expression),
   }
 });
-
