@@ -668,6 +668,10 @@
               },
               {
                 "type": "SYMBOL",
+                "name": "static_getter_definition"
+              },
+              {
+                "type": "SYMBOL",
                 "name": "method_definition"
               }
             ]
@@ -911,6 +915,24 @@
         {
           "type": "SYMBOL",
           "name": "method_definition"
+        }
+      ]
+    },
+    "static_getter_definition": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "static"
+        },
+        {
+          "type": "ALIAS",
+          "content": {
+            "type": "SYMBOL",
+            "name": "getter_definition"
+          },
+          "named": false,
+          "value": "test"
         }
       ]
     },

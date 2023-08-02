@@ -377,6 +377,10 @@
           "named": true
         },
         {
+          "type": "static_getter_definition",
+          "named": true
+        },
+        {
           "type": "static_method_definition",
           "named": true
         },
@@ -1560,6 +1564,11 @@
     }
   },
   {
+    "type": "static_getter_definition",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "static_method_definition",
     "named": true,
     "fields": {},
@@ -1767,6 +1776,32 @@
         },
         {
           "type": "parameter_list",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "test",
+    "named": false,
+    "fields": {
+      "body": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "block",
+            "named": true
+          }
+        ]
+      }
+    },
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "identifier",
           "named": true
         }
       ]
