@@ -30,7 +30,7 @@ module.exports = grammar({
     parameter: $ => alias($.name, "parameter"),
     parameter_list: $ => seq($.parameter, repeat(seq(",", $.parameter))),
     argument_list: $ => seq($._expression, optional(repeat(seq(",", $._expression)))),
-    variable_definition: $ => seq("var", $.name, "=", $._expression),
+    variable_definition: $ => seq("var", field("name", $.name), "=", $._expression),
     call_expression: $ => prec.left(2, choice(seq($._expression, "(", optional(alias($.argument_list, $.parameter_list)), ")"),
         prec.left(4, seq($._expression, optional(seq("(", optional(alias($.argument_list, $.parameter_list)), ")")), $.call_body)))),
     call_body: $ => seq("{", optional(seq("|", alias($.argument_list, $.parameter_list), "|")), field("body", repeat(choice($._statement, $._expression))), "}"),
