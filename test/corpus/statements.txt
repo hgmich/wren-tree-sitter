@@ -258,7 +258,7 @@ class Example {
           (name)))
       (method_definition
         (name)
-        (block)))))
+        body: (block)))))
 
 =======
 Imports
