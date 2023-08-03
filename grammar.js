@@ -52,7 +52,7 @@ module.exports = grammar({
     subscript: $ => prec(1, seq($._expression, "[", $._expression, "]")),
     range: $ => prec.left(seq($._expression, choice("..", "..."), $._expression)),
     if_statement: $ => prec.left(seq("if", "(", $._expression, ")", choice($._statement, $._expression), optional(seq("else", alias($._statement, $.else_branch))))),
-    for_statement: $ => seq("for", "(", $.name, "in", $._expression, ")", $._statement),
+    for_statement: $ => seq("for", "(", field("loop_variable", $.name), "in", $._expression, ")", $._statement),
     while_statement: $ => seq("while", "(", $._expression, ")", choice($._expression, $._statement)),
     pair: $ => seq($._expression, ":", $._expression),
     map: $ => prec(1, seq("{", optional(seq($.pair, repeat(seq(",", $.pair)), optional(","))), "}")),
@@ -65,9 +65,16 @@ module.exports = grammar({
     rename: $ => seq($.name, "as", $.name),
     shebang: $ => /#!.*/,
     _import_entry: $ => choice($.name, $.rename),
-    import_statement: $ => prec.right(seq("import", $.string, optional(seq("for", $._import_entry, repeat(seq(",", $._import_entry)))))),
-    _statement: $ => choice($.return_statement, $.break_statement, $.continue_statement, $.class_definition, $.variable_definition, $.assignment, $.if_statement, $.for_statement, $.while_statement, $.import_statement, $.block),
-    _expression: $ => choice($.conditional, $.unary_expression, $.binary_expression, $.raw_string, $.string, $.boolean, $.number, $.null, $.static_field, $.field, $.name, $.list, $.range, $.map, $.subscript, $.call_expression, $.index_expression),
+    import_statement: $ => prec.right(seq("import", $.string,
+        optional(seq("for", $._import_entry, repeat(seq(",", $._import_entry)))))),
+    _statement: $ => choice($.return_statement, $.break_statement,
+        $.continue_statement, $.class_definition, $.variable_definition, $.assignment,
+        $.if_statement, $.for_statement, $.while_statement, $.import_statement,
+        $.block),
+    _expression: $ => choice($.conditional, $.unary_expression,
+        $.binary_expression, $.raw_string, $.string, $.boolean, $.number, $.null,
+        $.static_field, $.field, $.name, $.list, $.range, $.map, $.subscript,
+        $.call_expression, $.index_expression),
   }
 });
 
