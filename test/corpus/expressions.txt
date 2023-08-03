@@ -12,8 +12,8 @@ a.b
 
 (source_file
 	(index_expression
-		(identifier)
-		(identifier)))
+		(name)
+		(name)))
 
 ====
 Call
@@ -29,28 +29,28 @@ body {|arg| arg}
 
 (source_file
 	(call_expression
-		(identifier))
+		(name))
 	(call_expression
-		(identifier)
+		(name)
 		(parameter_list
-			(identifier)
+			(name)
       (number)))
 	(call_expression
-		(identifier)
+		(name)
 		(call_body
       (number)))
 	(call_expression
-		(identifier)
+		(name)
 		(parameter_list
-			(identifier))
+			(name))
 		(call_body
       (number)))
 	(call_expression
-		(identifier)
+		(name)
 		(call_body
 			(parameter_list
-				(identifier))
-			(identifier))))
+				(name))
+			(name))))
 
 ===============
 Call with block
@@ -62,7 +62,7 @@ test_func {}
 
 (source_file
 	(call_expression
-		(identifier)
+		(name)
 		(call_body)))
 
 =====
@@ -76,31 +76,31 @@ System.print("hi")
 (source_file
 	(call_expression
 		(index_expression
-			(identifier)
-			(identifier))
+			(name)
+			(name))
 		(parameter_list
 			(string))))
 
-===========
-Identifiers
-===========
+=====
+Names
+=====
 
-hi
 camelCase
 PascalCase
 _under_score
+__static
 abc123
 ALL_CAPS
 
 ---
 
 (source_file
-	(identifier)
-	(identifier)
-	(identifier)
-	(identifier)
-	(identifier)
-	(identifier))
+	(name)
+	(name)
+	(field)
+	(static_field)
+	(name)
+	(name))
 
 =========
 Operators
@@ -259,7 +259,7 @@ a[1]
 
 (source_file
 	(subscript
-		(identifier)
+		(name)
 		(number)))
 
 ====
@@ -340,12 +340,12 @@ var a = !b
 
 (source_file
 	(variable_definition
-		(identifier)
+		(name)
 		(unary_expression
 			(operator)
-			(identifier)))
+			(name)))
 	(variable_definition
-		(identifier)
+		(name)
 		(unary_expression
 			(operator)
-			(identifier))))
+			(name))))

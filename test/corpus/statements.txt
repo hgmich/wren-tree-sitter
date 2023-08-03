@@ -23,7 +23,7 @@ color = "red"
 
 (source_file
 	(assignment
-		(identifier)
+		(name)
 		(string)))
 
 ======
@@ -41,11 +41,11 @@ Blocks
 (source_file
 	(block
 		(call_expression
-			(identifier))
+			(name))
 		(call_expression
-			(identifier))
+			(name))
 		(call_expression
-			(identifier))))
+			(name))))
 
 ====================
 Variable definitions
@@ -57,7 +57,7 @@ var a = 1
 
 (source_file
 	(variable_definition
-		(identifier)
+		(name)
 		(number)))
 
 =============
@@ -74,21 +74,21 @@ class Button {
 
 (source_file
 	(class_definition
-		(identifier)
+		(name)
 		(class_body
 			(constructor
 				(method_definition
-					(identifier)
+					(name)
 					(parameter_list
 						(parameter)
 						(parameter))
 					(block)))
 			(static_method_definition
 				(method_definition
-					(identifier)
+					(name)
 					(block)))
 			(method_definition
-				(identifier)
+				(name)
 				(parameter_list
 					(parameter))
 				(block)))))
@@ -105,10 +105,10 @@ class Button {
 
 (source_file
 	(class_definition
-		(identifier)
+		(name)
 		(class_body
 			(getter_definition
-				(identifier)
+				(name)
 				(block
 					(boolean))))))
 
@@ -124,10 +124,10 @@ class Button {
 
 (source_file
 	(class_definition
-		(identifier)
+		(name)
 		(class_body
 			(setter_definition
-				(identifier)
+				(name)
 				(parameter)
 				(block)))))
 
@@ -143,7 +143,7 @@ class Button {
 
 (source_file
 	(class_definition
-		(identifier)
+		(name)
 		(class_body
 			(prefix_operator_definition
 				(operator)
@@ -161,7 +161,7 @@ class Button {
 
 (source_file
 	(class_definition
-		(identifier)
+		(name)
 		(class_body
 			(infix_operator_definition
 				(operator)
@@ -182,7 +182,7 @@ class Button {
 
 (source_file
 	(class_definition
-		(identifier)
+		(name)
 		(class_body
 			(subscript_operator_definition
 				(parameter_list
@@ -209,8 +209,8 @@ class Pegasus is Unicorn {}
 
 (source_file
 	(class_definition
-		(identifier)
-		(identifier)
+		(name)
+		(name)
 		(class_body)))
 
 ==========
@@ -232,33 +232,33 @@ class Example {
   (class_definition
     (attribute
       (attribute_value
-        (identifier)))
+        (name)))
     (attribute
       (attribute_value
-        key: (identifier)
+        key: (name)
         value: (boolean)))
     (attribute
-      (identifier)
+      (name)
       (attribute_value
-        (identifier))
+        (name))
       (attribute_value
-        key: (identifier)
+        key: (name)
         value: (boolean))
       (attribute_value
-        key: (identifier)
+        key: (name)
         value: (string)))
     (runtime_attribute
       (attribute_value
-        key: (identifier)
+        key: (name)
         value: (boolean)))
-    (identifier)
+    (name)
     (class_body
       (attribute
         (attribute_value
-          (identifier)))
+          (name)))
       (method_definition
-        (identifier)
-        body: (block)))))
+        (name)
+        (block)))))
 
 =======
 Imports
@@ -274,10 +274,10 @@ import "beverages" for Coffee, Water as H2O
 		(string))
 	(import_statement
 		(string)
-		(identifier)
+		(name)
 		(rename
-			(identifier)
-			(identifier))))
+			(name)
+			(name))))
 
 =============
 If statements
@@ -289,7 +289,7 @@ if (ready) return 1 else return 5
 
 (source_file
 	(if_statement
-		(identifier)
+		(name)
 		(return_statement
 			(number))
 		(else_branch
@@ -308,15 +308,15 @@ for (beatle in ["paul", "ringo"]) {
 
 (source_file
 	(for_statement
-		(identifier)
+		(name)
 		(list
 			(string)
 			(string))
 		(block
 			(call_expression
-				(identifier)
+				(name)
 				(parameter_list
-					(identifier))))))
+					(name))))))
 
 ================
 While statements
@@ -331,7 +331,7 @@ while (n != 1) {
 (source_file
 	(while_statement
 		(binary_expression
-			(identifier)
+			(name)
 			(operator)
 			(number))
 		(block

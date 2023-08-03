@@ -153,9 +153,17 @@
         }
       ]
     },
-    "identifier": {
+    "static_field": {
       "type": "PATTERN",
-      "value": "[a-zA-Z_]+[0-9A-Za-z]*"
+      "value": "__[0-9A-Za-z]+[0-9A-Za-z_]*"
+    },
+    "field": {
+      "type": "PATTERN",
+      "value": "_[0-9A-Za-z]+[0-9A-Za-z_]*"
+    },
+    "name": {
+      "type": "PATTERN",
+      "value": "[a-zA-Z]+[0-9A-Za-z_]*"
     },
     "null": {
       "type": "STRING",
@@ -240,7 +248,7 @@
       "members": [
         {
           "type": "SYMBOL",
-          "name": "identifier"
+          "name": "_expression"
         },
         {
           "type": "STRING",
@@ -448,7 +456,7 @@
       "type": "ALIAS",
       "content": {
         "type": "SYMBOL",
-        "name": "identifier"
+        "name": "name"
       },
       "named": false,
       "value": "parameter"
@@ -520,7 +528,7 @@
         },
         {
           "type": "SYMBOL",
-          "name": "identifier"
+          "name": "name"
         },
         {
           "type": "STRING",
@@ -709,7 +717,7 @@
         },
         {
           "type": "SYMBOL",
-          "name": "identifier"
+          "name": "name"
         },
         {
           "type": "CHOICE",
@@ -723,7 +731,7 @@
                 },
                 {
                   "type": "SYMBOL",
-                  "name": "identifier"
+                  "name": "name"
                 }
               ]
             },
@@ -924,7 +932,7 @@
       "members": [
         {
           "type": "SYMBOL",
-          "name": "identifier"
+          "name": "name"
         },
         {
           "type": "ALIAS",
@@ -942,7 +950,7 @@
       "members": [
         {
           "type": "SYMBOL",
-          "name": "identifier"
+          "name": "name"
         },
         {
           "type": "STRING",
@@ -1102,7 +1110,7 @@
       "members": [
         {
           "type": "SYMBOL",
-          "name": "identifier"
+          "name": "name"
         },
         {
           "type": "STRING",
@@ -1275,7 +1283,7 @@
         },
         {
           "type": "SYMBOL",
-          "name": "identifier"
+          "name": "name"
         }
       ]
     },
@@ -1411,7 +1419,7 @@
         },
         {
           "type": "SYMBOL",
-          "name": "identifier"
+          "name": "name"
         },
         {
           "type": "STRING",
@@ -1584,7 +1592,7 @@
               "members": [
                 {
                   "type": "SYMBOL",
-                  "name": "identifier"
+                  "name": "name"
                 },
                 {
                   "type": "STRING",
@@ -1694,7 +1702,7 @@
       "members": [
         {
           "type": "SYMBOL",
-          "name": "identifier"
+          "name": "name"
         },
         {
           "type": "SEQ",
@@ -1704,7 +1712,7 @@
               "name": "key",
               "content": {
                 "type": "SYMBOL",
-                "name": "identifier"
+                "name": "name"
               }
             },
             {
@@ -1719,7 +1727,7 @@
                 "members": [
                   {
                     "type": "SYMBOL",
-                    "name": "identifier"
+                    "name": "name"
                   },
                   {
                     "type": "SYMBOL",
@@ -1745,7 +1753,7 @@
       "members": [
         {
           "type": "SYMBOL",
-          "name": "identifier"
+          "name": "name"
         },
         {
           "type": "STRING",
@@ -1753,7 +1761,7 @@
         },
         {
           "type": "SYMBOL",
-          "name": "identifier"
+          "name": "name"
         }
       ]
     },
@@ -1766,7 +1774,7 @@
       "members": [
         {
           "type": "SYMBOL",
-          "name": "identifier"
+          "name": "name"
         },
         {
           "type": "SYMBOL",
@@ -1914,7 +1922,15 @@
         },
         {
           "type": "SYMBOL",
-          "name": "identifier"
+          "name": "static_field"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "field"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "name"
         },
         {
           "type": "SYMBOL",

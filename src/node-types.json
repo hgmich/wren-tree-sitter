@@ -24,7 +24,7 @@
           "named": true
         },
         {
-          "type": "identifier",
+          "type": "field",
           "named": true
         },
         {
@@ -37,6 +37,10 @@
         },
         {
           "type": "map",
+          "named": true
+        },
+        {
+          "type": "name",
           "named": true
         },
         {
@@ -53,6 +57,10 @@
         },
         {
           "type": "raw_string",
+          "named": true
+        },
+        {
+          "type": "static_field",
           "named": true
         },
         {
@@ -83,7 +91,7 @@
           "named": true
         },
         {
-          "type": "identifier",
+          "type": "name",
           "named": true
         }
       ]
@@ -98,7 +106,7 @@
         "required": false,
         "types": [
           {
-            "type": "identifier",
+            "type": "name",
             "named": true
           }
         ]
@@ -112,7 +120,7 @@
             "named": true
           },
           {
-            "type": "identifier",
+            "type": "name",
             "named": true
           },
           {
@@ -131,7 +139,7 @@
       "required": false,
       "types": [
         {
-          "type": "identifier",
+          "type": "name",
           "named": true
         }
       ]
@@ -162,7 +170,7 @@
           "named": true
         },
         {
-          "type": "identifier",
+          "type": "field",
           "named": true
         },
         {
@@ -175,6 +183,10 @@
         },
         {
           "type": "map",
+          "named": true
+        },
+        {
+          "type": "name",
           "named": true
         },
         {
@@ -195,6 +207,10 @@
         },
         {
           "type": "raw_string",
+          "named": true
+        },
+        {
+          "type": "static_field",
           "named": true
         },
         {
@@ -257,11 +273,11 @@
             "named": true
           },
           {
-            "type": "for_statement",
+            "type": "field",
             "named": true
           },
           {
-            "type": "identifier",
+            "type": "for_statement",
             "named": true
           },
           {
@@ -285,6 +301,10 @@
             "named": true
           },
           {
+            "type": "name",
+            "named": true
+          },
+          {
             "type": "null",
             "named": true
           },
@@ -302,6 +322,10 @@
           },
           {
             "type": "return_statement",
+            "named": true
+          },
+          {
+            "type": "static_field",
             "named": true
           },
           {
@@ -368,11 +392,11 @@
           "named": true
         },
         {
-          "type": "for_statement",
+          "type": "field",
           "named": true
         },
         {
-          "type": "identifier",
+          "type": "for_statement",
           "named": true
         },
         {
@@ -396,6 +420,10 @@
           "named": true
         },
         {
+          "type": "name",
+          "named": true
+        },
+        {
           "type": "null",
           "named": true
         },
@@ -413,6 +441,10 @@
         },
         {
           "type": "return_statement",
+          "named": true
+        },
+        {
+          "type": "static_field",
           "named": true
         },
         {
@@ -488,11 +520,11 @@
             "named": true
           },
           {
-            "type": "for_statement",
+            "type": "field",
             "named": true
           },
           {
-            "type": "identifier",
+            "type": "for_statement",
             "named": true
           },
           {
@@ -516,6 +548,10 @@
             "named": true
           },
           {
+            "type": "name",
+            "named": true
+          },
+          {
             "type": "null",
             "named": true
           },
@@ -533,6 +569,10 @@
           },
           {
             "type": "return_statement",
+            "named": true
+          },
+          {
+            "type": "static_field",
             "named": true
           },
           {
@@ -598,7 +638,7 @@
           "named": true
         },
         {
-          "type": "identifier",
+          "type": "field",
           "named": true
         },
         {
@@ -611,6 +651,10 @@
         },
         {
           "type": "map",
+          "named": true
+        },
+        {
+          "type": "name",
           "named": true
         },
         {
@@ -631,6 +675,10 @@
         },
         {
           "type": "raw_string",
+          "named": true
+        },
+        {
+          "type": "static_field",
           "named": true
         },
         {
@@ -720,7 +768,7 @@
           "named": true
         },
         {
-          "type": "identifier",
+          "type": "name",
           "named": true
         },
         {
@@ -770,7 +818,7 @@
           "named": true
         },
         {
-          "type": "identifier",
+          "type": "field",
           "named": true
         },
         {
@@ -783,6 +831,10 @@
         },
         {
           "type": "map",
+          "named": true
+        },
+        {
+          "type": "name",
           "named": true
         },
         {
@@ -799,6 +851,10 @@
         },
         {
           "type": "raw_string",
+          "named": true
+        },
+        {
+          "type": "static_field",
           "named": true
         },
         {
@@ -931,11 +987,11 @@
           "named": true
         },
         {
-          "type": "for_statement",
+          "type": "field",
           "named": true
         },
         {
-          "type": "identifier",
+          "type": "for_statement",
           "named": true
         },
         {
@@ -959,6 +1015,10 @@
           "named": true
         },
         {
+          "type": "name",
+          "named": true
+        },
+        {
           "type": "null",
           "named": true
         },
@@ -976,6 +1036,10 @@
         },
         {
           "type": "return_statement",
+          "named": true
+        },
+        {
+          "type": "static_field",
           "named": true
         },
         {
@@ -1014,7 +1078,7 @@
           "named": true
         },
         {
-          "type": "identifier",
+          "type": "name",
           "named": true
         }
       ]
@@ -1033,7 +1097,7 @@
           "named": true
         },
         {
-          "type": "identifier",
+          "type": "name",
           "named": true
         }
       ]
@@ -1088,11 +1152,11 @@
           "named": true
         },
         {
-          "type": "for_statement",
+          "type": "field",
           "named": true
         },
         {
-          "type": "identifier",
+          "type": "for_statement",
           "named": true
         },
         {
@@ -1116,6 +1180,10 @@
           "named": true
         },
         {
+          "type": "name",
+          "named": true
+        },
+        {
           "type": "null",
           "named": true
         },
@@ -1133,6 +1201,10 @@
         },
         {
           "type": "return_statement",
+          "named": true
+        },
+        {
+          "type": "static_field",
           "named": true
         },
         {
@@ -1167,7 +1239,7 @@
       "required": true,
       "types": [
         {
-          "type": "identifier",
+          "type": "name",
           "named": true
         },
         {
@@ -1206,7 +1278,7 @@
           "named": true
         },
         {
-          "type": "identifier",
+          "type": "field",
           "named": true
         },
         {
@@ -1219,6 +1291,10 @@
         },
         {
           "type": "map",
+          "named": true
+        },
+        {
+          "type": "name",
           "named": true
         },
         {
@@ -1235,6 +1311,10 @@
         },
         {
           "type": "raw_string",
+          "named": true
+        },
+        {
+          "type": "static_field",
           "named": true
         },
         {
@@ -1300,7 +1380,7 @@
           "named": true
         },
         {
-          "type": "identifier",
+          "type": "field",
           "named": true
         },
         {
@@ -1313,6 +1393,10 @@
         },
         {
           "type": "map",
+          "named": true
+        },
+        {
+          "type": "name",
           "named": true
         },
         {
@@ -1329,6 +1413,10 @@
         },
         {
           "type": "raw_string",
+          "named": true
+        },
+        {
+          "type": "static_field",
           "named": true
         },
         {
@@ -1374,7 +1462,7 @@
           "named": true
         },
         {
-          "type": "identifier",
+          "type": "name",
           "named": true
         },
         {
@@ -1414,7 +1502,7 @@
           "named": true
         },
         {
-          "type": "identifier",
+          "type": "field",
           "named": true
         },
         {
@@ -1427,6 +1515,10 @@
         },
         {
           "type": "map",
+          "named": true
+        },
+        {
+          "type": "name",
           "named": true
         },
         {
@@ -1443,6 +1535,10 @@
         },
         {
           "type": "raw_string",
+          "named": true
+        },
+        {
+          "type": "static_field",
           "named": true
         },
         {
@@ -1490,7 +1586,7 @@
           "named": true
         },
         {
-          "type": "identifier",
+          "type": "field",
           "named": true
         },
         {
@@ -1503,6 +1599,10 @@
         },
         {
           "type": "map",
+          "named": true
+        },
+        {
+          "type": "name",
           "named": true
         },
         {
@@ -1523,6 +1623,10 @@
         },
         {
           "type": "raw_string",
+          "named": true
+        },
+        {
+          "type": "static_field",
           "named": true
         },
         {
@@ -1584,7 +1688,7 @@
           "named": true
         },
         {
-          "type": "identifier",
+          "type": "field",
           "named": true
         },
         {
@@ -1597,6 +1701,10 @@
         },
         {
           "type": "map",
+          "named": true
+        },
+        {
+          "type": "name",
           "named": true
         },
         {
@@ -1613,6 +1721,10 @@
         },
         {
           "type": "raw_string",
+          "named": true
+        },
+        {
+          "type": "static_field",
           "named": true
         },
         {
@@ -1644,7 +1756,7 @@
       "required": true,
       "types": [
         {
-          "type": "identifier",
+          "type": "name",
           "named": true
         }
       ]
@@ -1675,7 +1787,7 @@
           "named": true
         },
         {
-          "type": "identifier",
+          "type": "field",
           "named": true
         },
         {
@@ -1688,6 +1800,10 @@
         },
         {
           "type": "map",
+          "named": true
+        },
+        {
+          "type": "name",
           "named": true
         },
         {
@@ -1704,6 +1820,10 @@
         },
         {
           "type": "raw_string",
+          "named": true
+        },
+        {
+          "type": "static_field",
           "named": true
         },
         {
@@ -1749,7 +1869,7 @@
           "named": true
         },
         {
-          "type": "identifier",
+          "type": "name",
           "named": true
         },
         {
@@ -1804,11 +1924,11 @@
           "named": true
         },
         {
-          "type": "for_statement",
+          "type": "field",
           "named": true
         },
         {
-          "type": "identifier",
+          "type": "for_statement",
           "named": true
         },
         {
@@ -1829,6 +1949,10 @@
         },
         {
           "type": "map",
+          "named": true
+        },
+        {
+          "type": "name",
           "named": true
         },
         {
@@ -1853,6 +1977,10 @@
         },
         {
           "type": "shebang",
+          "named": true
+        },
+        {
+          "type": "static_field",
           "named": true
         },
         {
@@ -1923,7 +2051,7 @@
           "named": true
         },
         {
-          "type": "identifier",
+          "type": "field",
           "named": true
         },
         {
@@ -1936,6 +2064,10 @@
         },
         {
           "type": "map",
+          "named": true
+        },
+        {
+          "type": "name",
           "named": true
         },
         {
@@ -1952,6 +2084,10 @@
         },
         {
           "type": "raw_string",
+          "named": true
+        },
+        {
+          "type": "static_field",
           "named": true
         },
         {
@@ -1994,7 +2130,7 @@
           "named": true
         },
         {
-          "type": "identifier",
+          "type": "field",
           "named": true
         },
         {
@@ -2007,6 +2143,10 @@
         },
         {
           "type": "map",
+          "named": true
+        },
+        {
+          "type": "name",
           "named": true
         },
         {
@@ -2023,6 +2163,10 @@
         },
         {
           "type": "raw_string",
+          "named": true
+        },
+        {
+          "type": "static_field",
           "named": true
         },
         {
@@ -2107,7 +2251,7 @@
           "named": true
         },
         {
-          "type": "identifier",
+          "type": "field",
           "named": true
         },
         {
@@ -2120,6 +2264,10 @@
         },
         {
           "type": "map",
+          "named": true
+        },
+        {
+          "type": "name",
           "named": true
         },
         {
@@ -2140,6 +2288,10 @@
         },
         {
           "type": "raw_string",
+          "named": true
+        },
+        {
+          "type": "static_field",
           "named": true
         },
         {
@@ -2182,7 +2334,7 @@
           "named": true
         },
         {
-          "type": "identifier",
+          "type": "field",
           "named": true
         },
         {
@@ -2195,6 +2347,10 @@
         },
         {
           "type": "map",
+          "named": true
+        },
+        {
+          "type": "name",
           "named": true
         },
         {
@@ -2211,6 +2367,10 @@
         },
         {
           "type": "raw_string",
+          "named": true
+        },
+        {
+          "type": "static_field",
           "named": true
         },
         {
@@ -2273,11 +2433,11 @@
           "named": true
         },
         {
-          "type": "for_statement",
+          "type": "field",
           "named": true
         },
         {
-          "type": "identifier",
+          "type": "for_statement",
           "named": true
         },
         {
@@ -2301,6 +2461,10 @@
           "named": true
         },
         {
+          "type": "name",
+          "named": true
+        },
+        {
           "type": "null",
           "named": true
         },
@@ -2318,6 +2482,10 @@
         },
         {
           "type": "return_statement",
+          "named": true
+        },
+        {
+          "type": "static_field",
           "named": true
         },
         {
@@ -2440,12 +2608,12 @@
     "named": false
   },
   {
-    "type": "for",
-    "named": false
+    "type": "field",
+    "named": true
   },
   {
-    "type": "identifier",
-    "named": true
+    "type": "for",
+    "named": false
   },
   {
     "type": "if",
@@ -2462,6 +2630,10 @@
   {
     "type": "is",
     "named": false
+  },
+  {
+    "type": "name",
+    "named": true
   },
   {
     "type": "null",
@@ -2486,6 +2658,10 @@
   {
     "type": "static",
     "named": false
+  },
+  {
+    "type": "static_field",
+    "named": true
   },
   {
     "type": "true",
