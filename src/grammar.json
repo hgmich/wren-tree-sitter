@@ -411,6 +411,39 @@
         }
       ]
     },
+    "_labeled_block": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "{"
+        },
+        {
+          "type": "FIELD",
+          "name": "body",
+          "content": {
+            "type": "REPEAT",
+            "content": {
+              "type": "CHOICE",
+              "members": [
+                {
+                  "type": "SYMBOL",
+                  "name": "_statement"
+                },
+                {
+                  "type": "SYMBOL",
+                  "name": "_expression"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "type": "STRING",
+          "value": "}"
+        }
+      ]
+    },
     "parameter": {
       "type": "ALIAS",
       "content": {
@@ -635,19 +668,23 @@
           ]
         },
         {
-          "type": "REPEAT",
+          "type": "FIELD",
+          "name": "body",
           "content": {
-            "type": "CHOICE",
-            "members": [
-              {
-                "type": "SYMBOL",
-                "name": "_statement"
-              },
-              {
-                "type": "SYMBOL",
-                "name": "_expression"
-              }
-            ]
+            "type": "REPEAT",
+            "content": {
+              "type": "CHOICE",
+              "members": [
+                {
+                  "type": "SYMBOL",
+                  "name": "_statement"
+                },
+                {
+                  "type": "SYMBOL",
+                  "name": "_expression"
+                }
+              ]
+            }
           }
         },
         {
@@ -890,12 +927,13 @@
           "name": "identifier"
         },
         {
-          "type": "FIELD",
-          "name": "body",
+          "type": "ALIAS",
           "content": {
             "type": "SYMBOL",
-            "name": "block"
-          }
+            "name": "_labeled_block"
+          },
+          "named": true,
+          "value": "block"
         }
       ]
     },
@@ -923,12 +961,13 @@
           "value": ")"
         },
         {
-          "type": "FIELD",
-          "name": "body",
+          "type": "ALIAS",
           "content": {
             "type": "SYMBOL",
-            "name": "block"
-          }
+            "name": "_labeled_block"
+          },
+          "named": true,
+          "value": "block"
         }
       ]
     },
@@ -945,12 +984,13 @@
           "value": "operator"
         },
         {
-          "type": "FIELD",
-          "name": "body",
+          "type": "ALIAS",
           "content": {
             "type": "SYMBOL",
-            "name": "block"
-          }
+            "name": "_labeled_block"
+          },
+          "named": true,
+          "value": "block"
         }
       ]
     },
@@ -970,12 +1010,13 @@
           "value": "]"
         },
         {
-          "type": "FIELD",
-          "name": "body",
+          "type": "ALIAS",
           "content": {
             "type": "SYMBOL",
-            "name": "block"
-          }
+            "name": "_labeled_block"
+          },
+          "named": true,
+          "value": "block"
         }
       ]
     },
@@ -1011,12 +1052,13 @@
           "value": ")"
         },
         {
-          "type": "FIELD",
-          "name": "body",
+          "type": "ALIAS",
           "content": {
             "type": "SYMBOL",
-            "name": "block"
-          }
+            "name": "_labeled_block"
+          },
+          "named": true,
+          "value": "block"
         }
       ]
     },
@@ -1045,12 +1087,13 @@
           "value": ")"
         },
         {
-          "type": "FIELD",
-          "name": "body",
+          "type": "ALIAS",
           "content": {
             "type": "SYMBOL",
-            "name": "block"
-          }
+            "name": "_labeled_block"
+          },
+          "named": true,
+          "value": "block"
         }
       ]
     },
@@ -1082,12 +1125,13 @@
           "value": ")"
         },
         {
-          "type": "FIELD",
-          "name": "body",
+          "type": "ALIAS",
           "content": {
             "type": "SYMBOL",
-            "name": "block"
-          }
+            "name": "_labeled_block"
+          },
+          "named": true,
+          "value": "block"
         }
       ]
     },
