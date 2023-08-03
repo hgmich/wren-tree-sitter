@@ -22,7 +22,7 @@ module.exports = grammar({
     number: $ => choice(seq(/[+-]?[0-9]+/, token.immediate(optional(/\.[0-9]+/)), token.immediate(optional(/e[+-]?[0-9]{2}/))), /0x[0-9A-f]*/),
     boolean: $ => choice("true", "false"),
     return_statement: $ => seq("return", $._expression),
-    assignment: $ => seq($._expression, "=", $._expression),
+    assignment: $ => seq(field("left", $._expression), "=", field("right", $._expression)),
     unary_expression: $ => prec.left(2, seq(alias(choice("!", "-", "~"), $.operator), $._expression)),
     // TODO: @correctness correct prescedence
     binary_expression: $ => prec.left(2, seq($._expression, alias(choice("+", "-", "==", "!=", "<=", ">=", "&&", "||", "/", "*", "%", ">>", "<<", "&", "<", ">", "is"), $.operator), $._expression)),
