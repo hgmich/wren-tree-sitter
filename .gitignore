@@ -3,3 +3,13 @@
 # SPDX-License-Identifier: CC0-1.0
 
 node_modules/
+
+# Devenv
+devenv.local.nix
+
+# direnv
+.direnv
+
+# pre-commit
+.pre-commit-config.yaml
+
