@@ -100,7 +100,7 @@ ALL_CAPS
 	(field)
 	(static_field)
 	(name)
-	(class_name))
+	(constant_name))
 
 =========
 Operators

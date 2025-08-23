@@ -162,6 +162,10 @@
       "type": "PATTERN",
       "value": "_[0-9A-Za-z]+[0-9A-Za-z_]*"
     },
+    "constant_name": {
+      "type": "PATTERN",
+      "value": "[_A-Z]+[0-9A-Z_]*"
+    },
     "class_name": {
       "type": "PATTERN",
       "value": "[A-Z]+[0-9A-Za-z_]*"
@@ -2247,6 +2251,10 @@
         {
           "type": "SYMBOL",
           "name": "field"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "constant_name"
         },
         {
           "type": "SYMBOL",
