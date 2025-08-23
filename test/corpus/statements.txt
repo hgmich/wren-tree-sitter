@@ -78,19 +78,22 @@ class Button {
 		(class_body
 			(constructor
 				(method_definition
-					(name)
-					(parameter_list
-						(parameter)
-						(parameter))
+				    (method_declaration
+						(name)
+						(parameter_list
+							(parameter)
+							(parameter)))
 					(block)))
 			(static_method_definition
 				(method_definition
-					(name)
+    				(method_declaration
+    					(name))
 					(block)))
 			(method_definition
-				(name)
-				(parameter_list
-					(parameter))
+			    (method_declaration
+    				(name)
+    				(parameter_list
+    					(parameter)))
 				(block)))))
 
 ======
@@ -108,7 +111,8 @@ class Button {
 		(name)
 		(class_body
 			(getter_definition
-				(name)
+			    (getter_declaration
+					(name))
 				(block
 					(boolean))))))
 
@@ -127,8 +131,9 @@ class Button {
 		(name)
 		(class_body
 			(setter_definition
-				(name)
-				(parameter)
+			    (setter_declaration
+					(name)
+					(parameter))
 				(block)))))
 
 ===============
@@ -251,13 +256,14 @@ class Example {
       (attribute_value
         key: (name)
         value: (boolean)))
-    (name)
+    name: (name)
     (class_body
       (attribute
         (attribute_value
           (name)))
       (method_definition
-        (name)
+        (method_declaration
+          (name))
         body: (block)))))
 
 =======

@@ -49,7 +49,7 @@ body {|arg| arg}
 		(name)
 		(call_body
 			(parameter_list
-				(name))
+				(parameter))
 			(name))))
 
 ===============
@@ -76,7 +76,7 @@ System.print("hi")
 (source_file
 	(call_expression
 		(index_expression
-			(name)
+			(class_name)
 			(name))
 		(parameter_list
 			(string))))
@@ -96,11 +96,11 @@ ALL_CAPS
 
 (source_file
 	(name)
-	(name)
+	(class_name)
 	(field)
 	(static_field)
 	(name)
-	(name))
+	(class_name))
 
 =========
 Operators

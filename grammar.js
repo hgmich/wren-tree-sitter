@@ -11,7 +11,6 @@ module.exports = grammar({
   rules: {
     source_file: ($) =>
       seq(optional($.shebang), repeat(choice($._statement, $._expression))),
-    // TODO: @completeness Support foreign methods.
     // TODO: @correctness Add all escape codes here.
     string: ($) =>
       seq(
@@ -29,6 +28,7 @@ module.exports = grammar({
       choice(/\/\/.*/, seq("/*", repeat(choice($.comment, /./)), "*/")),
     static_field: ($) => /__[0-9A-Za-z]+[0-9A-Za-z_]*/,
     field: ($) => /_[0-9A-Za-z]+[0-9A-Za-z_]*/,
+    class_name: ($) => /[A-Z]+[0-9A-Za-z_]*/,
     name: ($) => /[a-zA-Z]+[0-9A-Za-z_]*/,
     null: ($) => "null",
     number: ($) =>
@@ -74,6 +74,7 @@ module.exports = grammar({
               "<",
               ">",
               "is",
+              "|",
             ),
             $.operator,
           ),
@@ -86,7 +87,7 @@ module.exports = grammar({
     argument_list: ($) =>
       seq($._expression, optional(repeat(seq(",", $._expression)))),
     variable_definition: ($) =>
-      seq("var", field("name", $.name), "=", $._expression),
+      seq("var", field("name", $.name), optional(seq("=", $._expression))),
     call_expression: ($) =>
       prec.left(
         2,
@@ -116,37 +117,42 @@ module.exports = grammar({
     call_body: ($) =>
       seq(
         "{",
-        optional(seq("|", alias($.argument_list, $.parameter_list), "|")),
+        optional(seq("|", $.parameter_list, "|")),
         field("body", repeat(choice($._statement, $._expression))),
         "}",
       ),
     class_definition: ($) =>
       seq(
         repeat($._any_attribute),
+        optional("foreign"),
         "class",
         field("name", $.name),
         optional(seq("is", field("superclass_name", $.name))),
         $.class_body,
       ),
     class_body: class_body,
-    getter_definition: ($) => seq($.name, field("body", $.block)),
-    setter_definition: ($) =>
-      seq($.name, "=", "(", $.parameter, ")", field("body", $.block)),
+    getter_declaration: ($) => $.name,
+    setter_declaration: ($) => seq($.name, "=", "(", $.parameter, ")"),
+    getter_definition: ($) => seq($.getter_declaration, field("body", $.block)),
+    setter_definition: ($) => seq($.setter_declaration, field("body", $.block)),
     prefix_operator_definition: ($) =>
       seq(alias(/[+-]/, $.operator), field("body", $.block)),
+    _subscript_params: ($) => seq("[", $.parameter_list, "]"),
     subscript_operator_definition: ($) =>
-      seq("[", $.parameter_list, "]", field("body", $.block)),
+      seq($._subscript_params, field("body", $.block)),
     subscript_setter_definition: ($) =>
       seq(
-        "[",
-        $.parameter_list,
-        "]",
+        $._subscript_params,
         "=",
         "(",
         $.parameter,
         ")",
         field("body", $.block),
       ),
+    foreign_subscript_operator_declaration: ($) =>
+      seq("foreign", $._subscript_params),
+    foreign_subscript_setter_declaration: ($) =>
+      seq("foreign", $._subscript_params, "=", "(", $.parameter, ")"),
     infix_operator_definition: ($) =>
       seq(
         alias(/[+-]/, $.operator),
@@ -155,12 +161,19 @@ module.exports = grammar({
         ")",
         field("body", $.block),
       ),
-    method_definition: ($) =>
-      seq($.name, "(", optional($.parameter_list), ")", field("body", $.block)),
+    method_declaration: ($) =>
+      seq($.name, "(", optional($.parameter_list), ")"),
+    method_definition: ($) => seq($.method_declaration, field("body", $.block)),
     constructor: ($) => seq("construct", $.method_definition),
     static_method_definition: ($) => seq("static", $.method_definition),
-    static_getter_definition: ($) =>
-      seq("static", alias($.getter_definition, "getter")),
+    static_getter_definition: ($) => seq("static", $.getter_definition),
+    static_setter_definition: ($) => seq("static", $.setter_definition),
+    foreign_method_declaration: ($) =>
+      seq("foreign", optional("static"), $.method_declaration),
+    foreign_getter_declaration: ($) =>
+      seq("foreign", optional("static"), $.getter_declaration),
+    foreign_setter_declaration: ($) =>
+      seq("foreign", optional("static"), $.setter_declaration),
     conditional: ($) =>
       prec.left(seq($._expression, "?", $._expression, ":", $._expression)),
     list: ($) =>
@@ -169,7 +182,11 @@ module.exports = grammar({
         optional(seq($._expression, optional(repeat(seq(",", $._expression))))),
         "]",
       ),
-    index_expression: ($) => seq($._expression, ".", $.name),
+    index_expression: ($) =>
+      prec(
+        1,
+        seq(field("indexee", $._expression), ".", field("index", $.name)),
+      ),
     subscript: ($) => prec(1, seq($._expression, "[", $._expression, "]")),
     range: ($) =>
       prec.left(seq($._expression, choice("..", "..."), $._expression)),
@@ -260,10 +277,15 @@ module.exports = grammar({
           "import",
           $.string,
           optional(
-            seq("for", $._import_entry, repeat(seq(",", $._import_entry))),
+            seq(
+              field("for", "for"),
+              $._import_entry,
+              repeat(seq(",", $._import_entry)),
+            ),
           ),
         ),
       ),
+    parenthetical: ($) => seq("(", $._expression, ")"),
     _statement: ($) =>
       choice(
         $.return_statement,
@@ -280,6 +302,7 @@ module.exports = grammar({
       ),
     _expression: ($) =>
       choice(
+        $.parenthetical,
         $.conditional,
         $.unary_expression,
         $.binary_expression,
@@ -290,6 +313,7 @@ module.exports = grammar({
         $.null,
         $.static_field,
         $.field,
+        $.class_name,
         $.name,
         $.list,
         $.range,
@@ -308,10 +332,16 @@ function class_body($) {
     $.prefix_operator_definition,
     $.subscript_operator_definition,
     $.subscript_setter_definition,
+    $.foreign_subscript_operator_declaration,
+    $.foreign_subscript_setter_declaration,
     $.infix_operator_definition,
     $.constructor,
+    $.foreign_method_declaration,
+    $.foreign_getter_declaration,
+    $.foreign_setter_declaration,
     $.static_method_definition,
     $.static_getter_definition,
+    $.static_setter_definition,
     $.method_definition,
   ];
   return seq(
