@@ -305,6 +305,22 @@ module.exports = grammar({
         $.import_statement,
         $.block,
       ),
+    _builtin_class: ($) =>
+      choice(
+        "Bool",
+        "Class",
+        "Fiber",
+        "Fn",
+        "List",
+        "Map",
+        "Null",
+        "Num",
+        "Object",
+        "Range",
+        "Sequence",
+        "String",
+        "System",
+      ),
     _expression: ($) =>
       choice(
         $.parenthetical,
@@ -327,6 +343,7 @@ module.exports = grammar({
         $.subscript,
         $.call_expression,
         $.index_expression,
+        $._builtin_class,
       ),
   },
 });

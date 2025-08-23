@@ -2214,6 +2214,63 @@
         }
       ]
     },
+    "_builtin_class": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "Bool"
+        },
+        {
+          "type": "STRING",
+          "value": "Class"
+        },
+        {
+          "type": "STRING",
+          "value": "Fiber"
+        },
+        {
+          "type": "STRING",
+          "value": "Fn"
+        },
+        {
+          "type": "STRING",
+          "value": "List"
+        },
+        {
+          "type": "STRING",
+          "value": "Map"
+        },
+        {
+          "type": "STRING",
+          "value": "Null"
+        },
+        {
+          "type": "STRING",
+          "value": "Num"
+        },
+        {
+          "type": "STRING",
+          "value": "Object"
+        },
+        {
+          "type": "STRING",
+          "value": "Range"
+        },
+        {
+          "type": "STRING",
+          "value": "Sequence"
+        },
+        {
+          "type": "STRING",
+          "value": "String"
+        },
+        {
+          "type": "STRING",
+          "value": "System"
+        }
+      ]
+    },
     "_expression": {
       "type": "CHOICE",
       "members": [
@@ -2296,6 +2353,10 @@
         {
           "type": "SYMBOL",
           "name": "index_expression"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_builtin_class"
         }
       ]
     }
