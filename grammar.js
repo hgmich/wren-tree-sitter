@@ -142,7 +142,7 @@ module.exports = grammar({
     getter_definition: ($) => seq($.getter_declaration, field("body", $.block)),
     setter_definition: ($) => seq($.setter_declaration, field("body", $.block)),
     prefix_operator_definition: ($) =>
-      seq(alias(/[+-]/, $.operator), field("body", $.block)),
+      seq(alias(choice("-", "!", "~"), $.operator), field("body", $.block)),
     _subscript_params: ($) => seq("[", $.parameter_list, "]"),
     subscript_operator_definition: ($) =>
       seq($._subscript_params, field("body", $.block)),
@@ -155,17 +155,35 @@ module.exports = grammar({
         ")",
         field("body", $.block),
       ),
-    foreign_subscript_operator_declaration: ($) =>
-      seq("foreign", $._subscript_params),
-    foreign_subscript_setter_declaration: ($) =>
-      seq("foreign", $._subscript_params, "=", "(", $.parameter, ")"),
     infix_operator_definition: ($) =>
-      seq(
-        alias(/[+-]/, $.operator),
-        "(",
-        $.parameter,
-        ")",
-        field("body", $.block),
+      // Needed to fix precedence conflict between unary - and infix -
+      prec.left(
+        1,
+        seq(
+          alias(
+            choice(
+              "+",
+              "-",
+              "*",
+              "/",
+              "%",
+              "..",
+              "...",
+              "<<",
+              ">>",
+              "<=",
+              ">=",
+              "is",
+              "==",
+              "!=",
+            ),
+            $.operator,
+          ),
+          "(",
+          $.parameter,
+          ")",
+          field("body", $.block),
+        ),
       ),
     method_declaration: ($) =>
       seq($.name, "(", optional($.parameter_list), ")"),
@@ -180,6 +198,10 @@ module.exports = grammar({
       seq("foreign", optional("static"), $.getter_declaration),
     foreign_setter_declaration: ($) =>
       seq("foreign", optional("static"), $.setter_declaration),
+    foreign_subscript_operator_declaration: ($) =>
+      seq("foreign", $._subscript_params),
+    foreign_subscript_setter_declaration: ($) =>
+      seq("foreign", $._subscript_params, "=", "(", $.parameter, ")"),
     conditional: ($) =>
       prec.left(seq($._expression, "?", $._expression, ":", $._expression)),
     list: ($) =>
