@@ -1226,7 +1226,7 @@
         },
         {
           "type": "SYMBOL",
-          "name": "parameter"
+          "name": "parameter_list"
         },
         {
           "type": "STRING",

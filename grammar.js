@@ -151,7 +151,7 @@ module.exports = grammar({
         $._subscript_params,
         "=",
         "(",
-        $.parameter,
+        $.parameter_list,
         ")",
         field("body", $.block),
       ),

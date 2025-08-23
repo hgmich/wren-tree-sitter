@@ -2877,10 +2877,6 @@
       "required": true,
       "types": [
         {
-          "type": "parameter",
-          "named": true
-        },
-        {
           "type": "parameter_list",
           "named": true
         }
