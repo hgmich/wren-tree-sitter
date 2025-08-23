@@ -43,7 +43,7 @@ module.exports = grammar({
       ),
     boolean: ($) => choice("true", "false"),
     return_statement: ($) =>
-      prec.right(1, seq("return", optional($._expression))),
+      prec.left(16, seq("return", optional($._expression))),
     assignment: ($) =>
       seq(field("left", $._expression), "=", field("right", $._expression)),
     unary_expression: ($) =>
