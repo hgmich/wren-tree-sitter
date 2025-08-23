@@ -100,7 +100,7 @@
       "type": "SEQ",
       "members": [
         {
-          "type": "PATTERN",
+          "type": "STRING",
           "value": "\"\"\""
         },
         {
@@ -111,7 +111,7 @@
           }
         },
         {
-          "type": "PATTERN",
+          "type": "STRING",
           "value": "\"\"\""
         }
       ]

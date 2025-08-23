@@ -23,7 +23,7 @@ module.exports = grammar({
         ),
         '"',
       ),
-    raw_string: ($) => seq(/"""/, repeat(/./), /"""/),
+    raw_string: ($) => seq('"""', repeat(/./), '"""'),
     comment: ($) =>
       choice(/\/\/.*/, seq("/*", repeat(choice($.comment, /./)), "*/")),
     static_field: ($) => /__[0-9A-Za-z]+[0-9A-Za-z_]*/,
