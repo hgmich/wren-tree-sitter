@@ -42,7 +42,8 @@ module.exports = grammar({
         /0x[0-9A-f]*/,
       ),
     boolean: ($) => choice("true", "false"),
-    return_statement: ($) => seq("return", $._expression),
+    return_statement: ($) =>
+      prec.right(1, seq("return", optional($._expression))),
     assignment: ($) =>
       seq(field("left", $._expression), "=", field("right", $._expression)),
     unary_expression: ($) =>
