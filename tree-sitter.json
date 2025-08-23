@@ -1,0 +1,37 @@
+{
+  "grammars": [
+    {
+      "name": "wren",
+      "camelcase": "Wren",
+      "scope": "source.java",
+      "path": ".",
+      "file-types": ["wren"]
+    }
+  ],
+  "metadata": {
+    "version": "0.23.5",
+    "license": "MIT",
+    "description": "Wren grammar for tree-sitter",
+    "authors": [
+      {
+        "name": "Jummit",
+        "email": "jummit@web.de"
+      },
+      {
+        "name": "Michael Gaver-Holmes",
+        "email": "hgmich+noreply@users.github.com"
+      }
+    ],
+    "links": {
+      "repository": "https://example.com"
+    }
+  },
+  "bindings": {
+    "c": true,
+    "go": true,
+    "node": true,
+    "python": true,
+    "rust": true,
+    "swift": true
+  }
+}
