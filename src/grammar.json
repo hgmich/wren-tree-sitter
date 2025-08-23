@@ -518,8 +518,17 @@
           "type": "FIELD",
           "name": "name",
           "content": {
-            "type": "SYMBOL",
-            "name": "name"
+            "type": "CHOICE",
+            "members": [
+              {
+                "type": "SYMBOL",
+                "name": "constant_name"
+              },
+              {
+                "type": "SYMBOL",
+                "name": "name"
+              }
+            ]
           }
         },
         {

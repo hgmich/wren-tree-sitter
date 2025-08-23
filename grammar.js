@@ -88,7 +88,11 @@ module.exports = grammar({
     argument_list: ($) =>
       seq($._expression, optional(repeat(seq(",", $._expression)))),
     variable_definition: ($) =>
-      seq("var", field("name", $.name), optional(seq("=", $._expression))),
+      seq(
+        "var",
+        field("name", choice($.constant_name, $.name)),
+        optional(seq("=", $._expression)),
+      ),
     call_expression: ($) =>
       prec.left(
         2,

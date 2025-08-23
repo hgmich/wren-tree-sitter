@@ -2783,6 +2783,10 @@
         "required": true,
         "types": [
           {
+            "type": "constant_name",
+            "named": true
+          },
+          {
             "type": "name",
             "named": true
           }
