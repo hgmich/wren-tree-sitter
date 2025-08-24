@@ -76,7 +76,7 @@ System.print("hi")
 (source_file
 	(call_expression
 		(index_expression
-			(class_name)
+			(builtin_class)
 			(name))
 		(parameter_list
 			(string))))

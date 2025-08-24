@@ -240,7 +240,7 @@
       ]
     },
     "return_statement": {
-      "type": "PREC_LEFT",
+      "type": "PREC_RIGHT",
       "value": 16,
       "content": {
         "type": "SEQ",
@@ -2426,7 +2426,7 @@
         }
       ]
     },
-    "_builtin_class": {
+    "builtin_class": {
       "type": "CHOICE",
       "members": [
         {
@@ -2568,7 +2568,7 @@
         },
         {
           "type": "SYMBOL",
-          "name": "_builtin_class"
+          "name": "builtin_class"
         }
       ]
     }
