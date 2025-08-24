@@ -141,50 +141,48 @@ module.exports = grammar({
     setter_declaration: ($) => seq($.name, "=", "(", $.parameter, ")"),
     getter_definition: ($) => seq($.getter_declaration, field("body", $.block)),
     setter_definition: ($) => seq($.setter_declaration, field("body", $.block)),
+    _prefix_operator_declaration: ($) =>
+      seq(optional("static"), alias(choice("-", "!", "~"), $.operator)),
     prefix_operator_definition: ($) =>
-      seq(alias(choice("-", "!", "~"), $.operator), field("body", $.block)),
+      seq($._prefix_operator_declaration, field("body", $.block)),
     _subscript_params: ($) => seq("[", $.parameter_list, "]"),
+    _subscript_operator_declaration: ($) =>
+      seq(optional("static"), $._subscript_params),
     subscript_operator_definition: ($) =>
-      seq($._subscript_params, field("body", $.block)),
+      seq($._subscript_operator_declaration, field("body", $.block)),
+    _subscript_setter_declaration: ($) =>
+      seq(optional("static"), $._subscript_params, "=", "(", $.parameter, ")"),
     subscript_setter_definition: ($) =>
+      seq($._subscript_setter_declaration, field("body", $.block)),
+    _infix_operator_declaration: ($) =>
       seq(
-        $._subscript_params,
-        "=",
+        optional("static"),
+        alias(
+          choice(
+            "+",
+            "-",
+            "*",
+            "/",
+            "%",
+            "..",
+            "...",
+            "<<",
+            ">>",
+            "<=",
+            ">=",
+            "is",
+            "==",
+            "!=",
+          ),
+          $.operator,
+        ),
         "(",
-        $.parameter_list,
+        $.parameter,
         ")",
-        field("body", $.block),
       ),
     infix_operator_definition: ($) =>
       // Needed to fix precedence conflict between unary - and infix -
-      prec.left(
-        1,
-        seq(
-          alias(
-            choice(
-              "+",
-              "-",
-              "*",
-              "/",
-              "%",
-              "..",
-              "...",
-              "<<",
-              ">>",
-              "<=",
-              ">=",
-              "is",
-              "==",
-              "!=",
-            ),
-            $.operator,
-          ),
-          "(",
-          $.parameter,
-          ")",
-          field("body", $.block),
-        ),
-      ),
+      prec.left(1, seq($._infix_operator_declaration, field("body", $.block))),
     method_declaration: ($) =>
       seq($.name, "(", optional($.parameter_list), ")"),
     method_definition: ($) => seq($.method_declaration, field("body", $.block)),
@@ -199,9 +197,13 @@ module.exports = grammar({
     foreign_setter_declaration: ($) =>
       seq("foreign", optional("static"), $.setter_declaration),
     foreign_subscript_operator_declaration: ($) =>
-      seq("foreign", $._subscript_params),
+      seq("foreign", $._subscript_operator_declaration),
     foreign_subscript_setter_declaration: ($) =>
-      seq("foreign", $._subscript_params, "=", "(", $.parameter, ")"),
+      seq("foreign", $._subscript_setter_declaration),
+    foreign_prefix_operator_declaration: ($) =>
+      seq("foreign", $._prefix_operator_declaration),
+    foreign_infix_operator_declaration: ($) =>
+      seq("foreign", $._infix_operator_declaration),
     conditional: ($) =>
       prec.left(seq($._expression, "?", $._expression, ":", $._expression)),
     list: ($) =>
@@ -380,6 +382,8 @@ function class_body($) {
     $.subscript_setter_definition,
     $.foreign_subscript_operator_declaration,
     $.foreign_subscript_setter_declaration,
+    $.foreign_prefix_operator_declaration,
+    $.foreign_infix_operator_declaration,
     $.infix_operator_definition,
     $.constructor,
     $.foreign_method_declaration,

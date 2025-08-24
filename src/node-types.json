@@ -836,7 +836,15 @@
           "named": true
         },
         {
+          "type": "foreign_infix_operator_declaration",
+          "named": true
+        },
+        {
           "type": "foreign_method_declaration",
+          "named": true
+        },
+        {
+          "type": "foreign_prefix_operator_declaration",
           "named": true
         },
         {
@@ -1277,6 +1285,25 @@
     }
   },
   {
+    "type": "foreign_infix_operator_declaration",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "operator",
+          "named": true
+        },
+        {
+          "type": "parameter",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "foreign_method_declaration",
     "named": true,
     "fields": {},
@@ -1286,6 +1313,21 @@
       "types": [
         {
           "type": "method_declaration",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "foreign_prefix_operator_declaration",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "operator",
           "named": true
         }
       ]
@@ -2876,6 +2918,10 @@
       "multiple": true,
       "required": true,
       "types": [
+        {
+          "type": "parameter",
+          "named": true
+        },
         {
           "type": "parameter_list",
           "named": true

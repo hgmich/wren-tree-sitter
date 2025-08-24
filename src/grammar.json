@@ -949,6 +949,38 @@
                   },
                   {
                     "type": "SYMBOL",
+                    "name": "foreign_prefix_operator_declaration"
+                  }
+                ]
+              },
+              {
+                "type": "SEQ",
+                "members": [
+                  {
+                    "type": "REPEAT",
+                    "content": {
+                      "type": "SYMBOL",
+                      "name": "attribute"
+                    }
+                  },
+                  {
+                    "type": "SYMBOL",
+                    "name": "foreign_infix_operator_declaration"
+                  }
+                ]
+              },
+              {
+                "type": "SEQ",
+                "members": [
+                  {
+                    "type": "REPEAT",
+                    "content": {
+                      "type": "SYMBOL",
+                      "name": "attribute"
+                    }
+                  },
+                  {
+                    "type": "SYMBOL",
                     "name": "infix_operator_definition"
                   }
                 ]
@@ -1153,9 +1185,21 @@
         }
       ]
     },
-    "prefix_operator_definition": {
+    "_prefix_operator_declaration": {
       "type": "SEQ",
       "members": [
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "STRING",
+              "value": "static"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        },
         {
           "type": "ALIAS",
           "content": {
@@ -1177,6 +1221,15 @@
           },
           "named": true,
           "value": "operator"
+        }
+      ]
+    },
+    "prefix_operator_definition": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "_prefix_operator_declaration"
         },
         {
           "type": "FIELD",
@@ -1205,12 +1258,33 @@
         }
       ]
     },
+    "_subscript_operator_declaration": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "STRING",
+              "value": "static"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_subscript_params"
+        }
+      ]
+    },
     "subscript_operator_definition": {
       "type": "SEQ",
       "members": [
         {
           "type": "SYMBOL",
-          "name": "_subscript_params"
+          "name": "_subscript_operator_declaration"
         },
         {
           "type": "FIELD",
@@ -1222,9 +1296,21 @@
         }
       ]
     },
-    "subscript_setter_definition": {
+    "_subscript_setter_declaration": {
       "type": "SEQ",
       "members": [
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "STRING",
+              "value": "static"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        },
         {
           "type": "SYMBOL",
           "name": "_subscript_params"
@@ -1239,11 +1325,20 @@
         },
         {
           "type": "SYMBOL",
-          "name": "parameter_list"
+          "name": "parameter"
         },
         {
           "type": "STRING",
           "value": ")"
+        }
+      ]
+    },
+    "subscript_setter_definition": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "_subscript_setter_declaration"
         },
         {
           "type": "FIELD",
@@ -1255,6 +1350,101 @@
         }
       ]
     },
+    "_infix_operator_declaration": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "STRING",
+              "value": "static"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        },
+        {
+          "type": "ALIAS",
+          "content": {
+            "type": "CHOICE",
+            "members": [
+              {
+                "type": "STRING",
+                "value": "+"
+              },
+              {
+                "type": "STRING",
+                "value": "-"
+              },
+              {
+                "type": "STRING",
+                "value": "*"
+              },
+              {
+                "type": "STRING",
+                "value": "/"
+              },
+              {
+                "type": "STRING",
+                "value": "%"
+              },
+              {
+                "type": "STRING",
+                "value": ".."
+              },
+              {
+                "type": "STRING",
+                "value": "..."
+              },
+              {
+                "type": "STRING",
+                "value": "<<"
+              },
+              {
+                "type": "STRING",
+                "value": ">>"
+              },
+              {
+                "type": "STRING",
+                "value": "<="
+              },
+              {
+                "type": "STRING",
+                "value": ">="
+              },
+              {
+                "type": "STRING",
+                "value": "is"
+              },
+              {
+                "type": "STRING",
+                "value": "=="
+              },
+              {
+                "type": "STRING",
+                "value": "!="
+              }
+            ]
+          },
+          "named": true,
+          "value": "operator"
+        },
+        {
+          "type": "STRING",
+          "value": "("
+        },
+        {
+          "type": "SYMBOL",
+          "name": "parameter"
+        },
+        {
+          "type": "STRING",
+          "value": ")"
+        }
+      ]
+    },
     "infix_operator_definition": {
       "type": "PREC_LEFT",
       "value": 1,
@@ -1262,82 +1452,8 @@
         "type": "SEQ",
         "members": [
           {
-            "type": "ALIAS",
-            "content": {
-              "type": "CHOICE",
-              "members": [
-                {
-                  "type": "STRING",
-                  "value": "+"
-                },
-                {
-                  "type": "STRING",
-                  "value": "-"
-                },
-                {
-                  "type": "STRING",
-                  "value": "*"
-                },
-                {
-                  "type": "STRING",
-                  "value": "/"
-                },
-                {
-                  "type": "STRING",
-                  "value": "%"
-                },
-                {
-                  "type": "STRING",
-                  "value": ".."
-                },
-                {
-                  "type": "STRING",
-                  "value": "..."
-                },
-                {
-                  "type": "STRING",
-                  "value": "<<"
-                },
-                {
-                  "type": "STRING",
-                  "value": ">>"
-                },
-                {
-                  "type": "STRING",
-                  "value": "<="
-                },
-                {
-                  "type": "STRING",
-                  "value": ">="
-                },
-                {
-                  "type": "STRING",
-                  "value": "is"
-                },
-                {
-                  "type": "STRING",
-                  "value": "=="
-                },
-                {
-                  "type": "STRING",
-                  "value": "!="
-                }
-              ]
-            },
-            "named": true,
-            "value": "operator"
-          },
-          {
-            "type": "STRING",
-            "value": "("
-          },
-          {
             "type": "SYMBOL",
-            "name": "parameter"
-          },
-          {
-            "type": "STRING",
-            "value": ")"
+            "name": "_infix_operator_declaration"
           },
           {
             "type": "FIELD",
@@ -1532,7 +1648,7 @@
         },
         {
           "type": "SYMBOL",
-          "name": "_subscript_params"
+          "name": "_subscript_operator_declaration"
         }
       ]
     },
@@ -1545,23 +1661,33 @@
         },
         {
           "type": "SYMBOL",
-          "name": "_subscript_params"
-        },
+          "name": "_subscript_setter_declaration"
+        }
+      ]
+    },
+    "foreign_prefix_operator_declaration": {
+      "type": "SEQ",
+      "members": [
         {
           "type": "STRING",
-          "value": "="
-        },
-        {
-          "type": "STRING",
-          "value": "("
+          "value": "foreign"
         },
         {
           "type": "SYMBOL",
-          "name": "parameter"
-        },
+          "name": "_prefix_operator_declaration"
+        }
+      ]
+    },
+    "foreign_infix_operator_declaration": {
+      "type": "SEQ",
+      "members": [
         {
           "type": "STRING",
-          "value": ")"
+          "value": "foreign"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_infix_operator_declaration"
         }
       ]
     },
