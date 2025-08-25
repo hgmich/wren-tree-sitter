@@ -241,7 +241,7 @@
     },
     "return_statement": {
       "type": "PREC_RIGHT",
-      "value": 16,
+      "value": 2,
       "content": {
         "type": "SEQ",
         "members": [
@@ -257,7 +257,8 @@
                 "name": "_expression"
               },
               {
-                "type": "BLANK"
+                "type": "PATTERN",
+                "value": "\\r?\\n"
               }
             ]
           }
@@ -265,29 +266,33 @@
       }
     },
     "assignment": {
-      "type": "SEQ",
-      "members": [
-        {
-          "type": "FIELD",
-          "name": "left",
-          "content": {
-            "type": "SYMBOL",
-            "name": "_expression"
+      "type": "PREC",
+      "value": 10,
+      "content": {
+        "type": "SEQ",
+        "members": [
+          {
+            "type": "FIELD",
+            "name": "left",
+            "content": {
+              "type": "SYMBOL",
+              "name": "_expression"
+            }
+          },
+          {
+            "type": "STRING",
+            "value": "="
+          },
+          {
+            "type": "FIELD",
+            "name": "right",
+            "content": {
+              "type": "SYMBOL",
+              "name": "_expression"
+            }
           }
-        },
-        {
-          "type": "STRING",
-          "value": "="
-        },
-        {
-          "type": "FIELD",
-          "name": "right",
-          "content": {
-            "type": "SYMBOL",
-            "name": "_expression"
-          }
-        }
-      ]
+        ]
+      }
     },
     "unary_expression": {
       "type": "PREC_LEFT",
