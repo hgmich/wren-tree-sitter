@@ -366,3 +366,187 @@ Shebang
 
 (source_file
 	(shebang))
+
+====================
+Foreign declarations
+====================
+
+foreign class Foreign {
+    foreign a
+    foreign a=(val)
+    foreign a(x)
+
+    foreign [a]
+    foreign [a,b]
+    foreign [a]=(val)
+    foreign [a,b]=(val)
+
+    foreign static a
+    foreign static a=(val)
+    foreign static a(x)
+
+    foreign static [a]
+    foreign static [a,b]
+    foreign static [a]=(val)
+    foreign static [a,b]=(val)
+}
+
+---
+
+(source_file
+  (class_definition
+    (name)
+    (class_body
+      (foreign_getter_declaration
+        (getter_declaration
+          (name)))
+      (foreign_setter_declaration
+        (setter_declaration
+          (name)
+          (parameter)))
+      (foreign_method_declaration
+        (method_declaration
+          (name)
+          (parameter_list
+            (parameter))))
+      (foreign_subscript_operator_declaration
+        (parameter_list
+          (parameter)))
+      (foreign_subscript_operator_declaration
+        (parameter_list
+          (parameter)
+          (parameter)))
+      (foreign_subscript_setter_declaration
+        (parameter_list
+          (parameter))
+        (parameter))
+      (foreign_subscript_setter_declaration
+        (parameter_list
+          (parameter)
+          (parameter))
+        (parameter))
+      (foreign_getter_declaration
+        (getter_declaration
+          (name)))
+      (foreign_setter_declaration
+        (setter_declaration
+          (name)
+          (parameter)))
+      (foreign_method_declaration
+        (method_declaration
+          (name)
+          (parameter_list
+            (parameter))))
+      (foreign_subscript_operator_declaration
+        (parameter_list
+          (parameter)))
+      (foreign_subscript_operator_declaration
+        (parameter_list
+          (parameter)
+          (parameter)))
+      (foreign_subscript_setter_declaration
+        (parameter_list
+          (parameter))
+        (parameter))
+      (foreign_subscript_setter_declaration
+        (parameter_list
+          (parameter)
+          (parameter))
+        (parameter)))))
+
+=========
+Operators
+=========
+
+class Operators {
+    ! {}
+    - {}
+    ~ {}
+
+    + (other) {}
+    - (other) {}
+    * (other) {}
+    / (other) {}
+    % (other) {}
+    >> (other) {}
+    << (other) {}
+    <= (other) {}
+    >= (other) {}
+    == (other) {}
+    != (other) {}
+    .. (other) {}
+    ... (other) {}
+    is (other) {}
+}
+
+---
+
+(source_file
+   (class_definition
+     (name)
+     (class_body
+       (prefix_operator_definition
+         (operator)
+         (block))
+       (prefix_operator_definition
+         (operator)
+         (block))
+       (prefix_operator_definition
+         (operator)
+         (block))
+       (infix_operator_definition
+         (operator)
+         (parameter)
+         (block))
+       (infix_operator_definition
+         (operator)
+         (parameter)
+         (block))
+       (infix_operator_definition
+         (operator)
+         (parameter)
+         (block))
+       (infix_operator_definition
+         (operator)
+         (parameter)
+         (block))
+       (infix_operator_definition
+         (operator)
+         (parameter)
+         (block))
+       (infix_operator_definition
+         (operator)
+         (parameter)
+         (block))
+       (infix_operator_definition
+         (operator)
+         (parameter)
+         (block))
+       (infix_operator_definition
+         (operator)
+         (parameter)
+         (block))
+       (infix_operator_definition
+         (operator)
+         (parameter)
+         (block))
+       (infix_operator_definition
+         (operator)
+         (parameter)
+         (block))
+       (infix_operator_definition
+         (operator)
+         (parameter)
+         (block))
+       (infix_operator_definition
+         (operator)
+         (parameter)
+         (block))
+       (infix_operator_definition
+         (operator)
+         (parameter)
+         (block))
+       (infix_operator_definition
+         (operator)
+         (parameter)
+         (block)))))
